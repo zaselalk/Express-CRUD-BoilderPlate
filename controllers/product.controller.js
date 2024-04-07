@@ -1,4 +1,4 @@
-const Product = require("../models/product.model");
+const Product = require('../models/product.model')
 
 /**
  * It's an asynchronous function that uses the await keyword to wait for the result of the find()
@@ -11,12 +11,12 @@ const Product = require("../models/product.model");
  */
 const getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
-    res.status(200).json(products);
+    const products = await Product.find()
+    res.status(200).json(products)
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 /**
  * It's an asynchronous function that uses the Product model to find a product by its id, and then
@@ -26,12 +26,12 @@ const getProducts = async (req, res) => {
  */
 const getProduct = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
-    res.status(200).json(product);
+    const product = await Product.findById(req.params.id)
+    res.status(200).json(product)
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 /**
  * It creates a new product using the data from the request body and returns the created product in the
@@ -42,12 +42,12 @@ const getProduct = async (req, res) => {
  */
 const createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
-    res.status(201).json(product);
+    const product = await Product.create(req.body)
+    res.status(201).json(product)
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 /**
  * It takes the id of the product to be updated from the request params, and the updated product data
@@ -59,13 +59,13 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.status(200).json(product);
+      new: true
+    })
+    res.status(200).json(product)
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 /**
  * It finds a product by its id and deletes it.
@@ -75,17 +75,17 @@ const updateProduct = async (req, res) => {
  */
 const deleteProduct = async (req, res) => {
   try {
-    const product = await Product.findByIdAndDelete(req.params.id);
-    res.status(200).json(product);
+    const product = await Product.findByIdAndDelete(req.params.id)
+    res.status(200).json(product)
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json(error)
   }
-};
+}
 
 module.exports = {
   getProducts,
   getProduct,
   createProduct,
   updateProduct,
-  deleteProduct,
-};
+  deleteProduct
+}
